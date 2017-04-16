@@ -1,0 +1,33 @@
+{
+  "name": "rxjstest",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --watch --inline",
+    "postinstall": "typings install"
+   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unravel-the-sky/rxjstests.git"
+  },
+  "keywords": [
+    "rxjs"
+  ],
+  "author": "Sadan Ekdemir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unravel-the-sky/rxjstests/issues"
+  },
+  "homepage": "https://github.com/unravel-the-sky/rxjstests#readme",
+  "dependencies": {
+    "rxjs": "^5.3.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "typings": "^2.1.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
