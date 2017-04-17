@@ -31,23 +31,28 @@ import {Observable} from "rxjs";
 // )
 
 // MODULE 2
-let circle = document.getElementById("circle");
-let source = Observable.fromEvent(document, "mousemove")
-                        .map((e: MouseEvent) => {
-                            return {
-                                x: e.clientX,
-                                y: e.clientY
-                            }
-                        })
-                        .filter(val => val.x < 10000);
+let output = document.getElementById("output");
+let button = document.getElementById("button");
+let click = Observable.fromEvent(button, "click");
 
-function onNext(value){
-    circle.style.left = value.x;
-    circle.style.top = value.y;
+let load = (url: string) => {
+    let xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("load", () => {
+        let movies = JSON.parse(xhr.responseText);
+        movies.forEach(element => {
+            let div = document.createElement("div");
+            div.innerText = element.title;
+            output.appendChild(div);
+        });
+    })
+
+    xhr.open("GET", url);
+    xhr.send();
 }
 
-source.subscribe(
-    onNext,
+click.subscribe(
+    val => load("movies.json"),
     error => console.log('errrr'),
     () => console.log('complete')
 )
